@@ -526,7 +526,7 @@ var import_button;
 				questionType = $('#question_type').val();
 			}
 			var answerTemplate = wp.template('single-answer');
-			if (answer.length >= 7 && answer[6] == 'image') {
+			if (answer.length >= 7 && (answer[6] == 'image' || answer[6] == 'tagged')) {
 				$('#answers').append(answerTemplate({
 					answer: decodeEntities(answer[0]),
 					points: answer[1],

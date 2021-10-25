@@ -377,6 +377,7 @@ function qsm_options_questions_tab_content() {
 															'text' => __( 'Text Answers', 'quiz-master-next' ),
 															'rich' => __( 'Rich Answers', 'quiz-master-next' ),
 															'image' => __( 'Image Answers', 'quiz-master-next' ),
+															'tagged' => __( 'Tagged Answers', 'quiz-master-next' ),
 														),
 														'default' => 'text',
 														'show' => '0,1,2,4,13',
@@ -681,6 +682,9 @@ function qsm_options_questions_tab_content() {
 					<input type="text" class="answer-text" id="featured_image_textbox" value="{{data.answer}}" placeholder="Insert image URL"/>
 					<a href="#" id="set_featured_image"><span class="dashicons dashicons-insert"></span></a>
 					<input type="text" class="answer-caption" id="featured_image_caption" value="{{data.caption}}" placeholder="Image Caption"/>
+				<# } else if ( 'tagged' == data.answerType ) { #>
+					<input type="text" class="answer-text" value="{{data.answer}}" placeholder="Your answer"/>
+					<input type="text" class="answer-caption" value="{{data.caption}}" placeholder="Answer Tag"/>
 				<# } else { #>
 					<input type="text" class="answer-text" value="{{data.answer}}" placeholder="Your answer"/>
 				<# } #>
