@@ -434,7 +434,7 @@ var import_button;
 				if (answerType == 'rich') {
 					var ta_id = $answer.find('textarea').attr('id')
 					answer = wp.editor.getContent(ta_id);
-				} else if (answerType == 'image') {
+				} else if (answerType == 'image' || answerType == 'tagged') {
 					answer = $answer.find('.answer-text').val().trim();
 					answer = $.QSMSanitize(answer);
 					caption = $answer.find('.answer-caption').val().trim();
@@ -450,7 +450,7 @@ var import_button;
 					correct = 1;
 				}
 
-				if (answerType == 'image') {
+				if (answerType == 'image' || answerType == 'tagged') {
 					answers.push([answer, points, correct, caption]);
 				} else {
 					answers.push([answer, points, correct]);
