@@ -17,9 +17,11 @@ class MlwQmnAlertManager {
         * @param $type This variable holds either success/error and displays the correct message accordingly. 
         * @since 4.4.0
         */
-	public function newAlert($message, $type)
-	{
-		$this->alerts[] = array( 'message' => $message, 'type' => $type );
+	public function newAlert( $message, $type ) {
+		$this->alerts[] = array(
+			'message' => $message,
+			'type'    => $type,
+		);
 	}
 
         /**
@@ -27,22 +29,28 @@ class MlwQmnAlertManager {
         *
         * @since 4.4.0
         */
-	public function showAlerts()
-	{
+	public function showAlerts() {
 		$alert_list = "";
-		foreach ($this->alerts as $alert)
-		{
-			if ($alert['type'] == "success")
-			{
+		foreach ( $this->alerts as $alert ) {
+			if ( "success" === $alert['type'] ) {
 				$alert_list .= "<div id=\"message\" class=\"updated below-h2\"><p><strong>".__('Success!', 'quiz-master-next')." </strong>".$alert["message"]."</p></div>";
 			}
-			if ($alert['type'] == "error")
-			{
+			if ( "error" === $alert['type'] ) {
 				$alert_list .= "<div id=\"message\" class=\"error below-h2\"><p><strong>".__('Error!', 'quiz-master-next')." </strong>".$alert["message"]."</p></div>";
 			}
 		}
 		echo apply_filters( 'qsm_alert_messages', $alert_list );
 	}
 
+	public function showWarnings() {
+		$alert_list = "";
+		foreach ( $this->alerts as $alert ) {
+			if ( "warning" === $alert['type'] ) {
+				$alert_list .= "<div class=\"notice notice-warning \"><p><strong>".__('Warning!', 'quiz-master-next')." </strong>".$alert["message"]."</p></div>";
+			}
+		}
+		echo apply_filters( 'qsm_warning_messages', $alert_list );
+	}
+
 }
-?>
+
