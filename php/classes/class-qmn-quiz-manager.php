@@ -756,7 +756,7 @@ public function load_questions( $quiz_id, $quiz_options, $is_quiz_page, $questio
 			$quiz_display .= $this->display_end_section( $options, $quiz_data );
 		}
 		$quiz_display  = apply_filters( 'qmn_before_error_message', $quiz_display, $options, $quiz_data );
-		$quiz_display .= "<div id='mlw_error_message_bottom' class='qsm-error-message qmn_error_message_section'></div>";
+		$quiz_display .= "<div id='mlw_error_message_bottom' class='qsm-error-message qmn_error_message_section' hidden></div>";
 		$quiz_display .= "<input type='hidden' name='total_questions' id='total_questions' value='$qmn_total_questions'/>";
 		$quiz_display .= "<input type='hidden' name='timer' id='timer' value='0'/>";
 		$quiz_display .= "<input type='hidden' name='timer_ms' id='timer_ms' value='0'/>";
@@ -799,7 +799,7 @@ public function load_questions( $quiz_id, $quiz_options, $is_quiz_page, $questio
 			?>
 <section class="qsm-page <?php echo $animation_effect; ?>">
 	<div class="quiz_section quiz_begin">
-		<div class='qsm-before-message mlw_qmn_message_before'>
+		<div class='h2'>
 			<?php
 							echo $this->qsm_convert_editor_text_to_shortcode( $message_before );
 			?>
@@ -830,7 +830,7 @@ public function load_questions( $quiz_id, $quiz_options, $is_quiz_page, $questio
 				$message_before              = apply_filters( 'mlw_qmn_template_variable_quiz_page', $message_before, $quiz_data );
 				?>
 	<div class="quiz_section quiz_begin">
-		<div class='qsm-before-message mlw_qmn_message_before'>
+		<div class='qsm-before-message mlw_qmn_message_before h2'>
 			<?php
 						echo $this->qsm_convert_editor_text_to_shortcode( $message_before );
 				?>
@@ -853,6 +853,8 @@ public function load_questions( $quiz_id, $quiz_options, $is_quiz_page, $questio
 					}
 				}
 				?>
+	<div class="col-md-2"></div>
+	<div class="col-md-8">
 	<div class='quiz_section qsm-question-wrapper question-section-id-<?php echo esc_attr( $question_id ); ?> <?php echo esc_attr($categor_class);?>'
 		data-qid="<?php echo esc_attr($question_id); ?>">
 		<?php
@@ -869,6 +871,8 @@ public function load_questions( $quiz_id, $quiz_options, $is_quiz_page, $questio
 				}
 				?>
 	</div>
+	</div>
+	<div class="col-md-2"></div>
 	<?php
 			}
 			if ( 0 == $options->comment_section ) {
@@ -995,15 +999,31 @@ public function load_questions( $quiz_id, $quiz_options, $is_quiz_page, $questio
 		?>
 <!-- View for pagination -->
 <script type="text/template" id="tmpl-qsm-pagination-<?php echo $options->quiz_id; ?>">
-	<div class="qsm-pagination qmn_pagination border margin-bottom">
-			<a class="qsm-btn qsm-previous qmn_btn mlw_qmn_quiz_link mlw_previous" href="#"><?php echo esc_html( $options->previous_button_text ); ?></a>
+	<div class="qsm-pagination qmn_pagination">
+
+			<a class="qsm-btn qsm-previous mlw_qmn_quiz_link mlw_previous text-decoration-none quizBtn text-left align-middle" href="#">
+				<?php echo esc_html( $options->previous_button_text ); ?>
+				<div>
+					<img class="btn-img-hover" style="width:30%;height:auto;" src="<?php echo get_stylesheet_directory_uri(); ?>/images/QuizPreviousArrow_static.png">
+					<img class="btn-img-static" style="width:30%;height:auto;" src="<?php echo get_stylesheet_directory_uri(); ?>/images/QuizPreviousArrow_hover.png">
+				</div>
+			</a>
+			
 			<span class="qmn_page_message"></span>
 			<div class="qmn_page_counter_message"></div>
 			<div class="qsm-progress-bar" style="display:none;"><div class="progressbar-text"></div></div>
-			<a class="qsm-btn qsm-next qmn_btn mlw_qmn_quiz_link mlw_next" href="#"><?php echo esc_html( $options->next_button_text ); ?></a>
-			<input type='submit' class='qsm-btn qsm-submit-btn qmn_btn' value='<?php echo esc_attr( htmlspecialchars_decode( $options->submit_button_text, ENT_QUOTES ) ); ?>' />
-			</div>
-		</script>
+
+			<a class="qsm-btn qsm-next mlw_qmn_quiz_link mlw_next text-decoration-none quizBtn text-right align-middle" href="#">
+				<?php echo esc_html( $options->next_button_text ); ?>
+				<div>
+					<img class="btn-img-hover" style="width:30%;height:auto;" src="<?php echo get_stylesheet_directory_uri(); ?>/images/QuizNextArrow_static.png">
+                	<img class="btn-img-static" style="width:30%;height:auto;" src="<?php echo get_stylesheet_directory_uri(); ?>/images/QuizNextArrow_hover.png">
+				</div>
+			</a>
+
+			<input type='submit' class='qsm-submit-btn' value='<?php echo esc_attr( htmlspecialchars_decode( $options->submit_button_text, ENT_QUOTES ) ); ?>' />
+	</div>
+</script>
 <input type='hidden' name='qmn_question_list' value='<?php echo esc_attr( $question_list ); ?>' />
 <?php
 		return ob_get_clean();
@@ -1198,11 +1218,11 @@ public function load_questions( $quiz_id, $quiz_options, $is_quiz_page, $questio
 			$end_section  = '<br />';
 			$end_section .= "<div class='qsm-auto-page-row quiz_section quiz_end' {$style}>";
 			$end_section .= $section_display;
-			$end_section .= "<input type='submit' class='qsm-btn qsm-submit-btn qmn_btn' value='" . esc_attr( htmlspecialchars_decode( $qmn_quiz_options->submit_button_text, ENT_QUOTES ) ) . "' />";
+			$end_section .= "<input type='submit' class='qsm-submit-btn' value='" . esc_attr( htmlspecialchars_decode( $qmn_quiz_options->submit_button_text, ENT_QUOTES ) ) . "' />";
 			$end_section .= '</div>';
 		} else {
 			$end_section .= "<div class='qsm-auto-page-row quiz_section quiz_end empty_quiz_end' {$style}>";
-			$end_section .= "<input type='submit' class='qsm-btn qsm-submit-btn qmn_btn' value='" . esc_attr( htmlspecialchars_decode( $qmn_quiz_options->submit_button_text, ENT_QUOTES ) ) . "' />";
+			$end_section .= "<input type='submit' class='qsm-submit-btn' value='" . esc_attr( htmlspecialchars_decode( $qmn_quiz_options->submit_button_text, ENT_QUOTES ) ) . "' />";
 			$end_section .= '</div>';
 		}
 

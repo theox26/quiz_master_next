@@ -483,5 +483,4 @@ class QSM_Questions {
 		}
 		return $taxTree;
 	}
-
 }

@@ -219,6 +219,10 @@ footer.qsm-popup__footer button.qsm-popup-secondary-button:hover {
 	padding-right: 10px;
 }
 
+.qsm-text-correct-option {
+	font-weight:bold;
+}
+
 .mlw_qmn_question .qsm-text-correct-option:after {
 	content: "\f159";
 	font-family: dashicons;

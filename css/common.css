@@ -25,6 +25,61 @@ body .quiz_section .qsm_contact_div .mlw_qmn_question{
 	margin-bottom: 10px;
 }
 
+h2 {
+    font-family: niveau-grotesk, sans-serif;
+    font-size:2rem;
+    font-weight:400;
+    margin-bottom:1rem;
+}
+h3 {
+    font-family: niveau-grotesk, sans-serif;
+    font-size:1.25rem;
+    font-weight:300;
+    margin-bottom:1rem;
+}
+.qmn_check_answers {
+    margin-bottom:1rem;
+    padding-left:4px;
+}
+.qsm_check_answer {
+    margin-top:0.5rem;
+}
+.qsm_remove_bold {
+    font-family: niveau-grotesk, sans-serif;
+    font-size:1.35rem !important;
+    font-weight:100 !important;
+    margin-bottom:0rem !important;
+}
+.qmn_check_answers label {
+    font-size:1.25rem !important;
+    font-weight:500 !important;
+}
+.mlw_answer_open_text {
+    width:100% !important;
+    font-size:1.5rem !important;
+}
+.qmn_radio_answers label {
+    font-size:1.25rem !important;
+    font-weight:500 !important;
+}
+.qsm-submit-btn {
+    outline: none;
+    border: none;
+    background-color: #FFFFFF !important;
+    color: #023A37;
+    font-family: niveau-grotesk, sans-serif;
+}
+.qsm-submit-btn:hover {
+    color:#977640;
+}
+
+input[type=checkbox], input[type=radio] {
+    transform: scale(1.5) !important;
+}
+input[type=checkbox]:checked {
+    background-color: #023A37;
+}
+
 .polar-question-title{
     margin-bottom: 50px;
     font-size: 16px;
@@ -128,10 +183,10 @@ footer.qsm-popup__footer button.qsm-popup-secondary-button:hover{
     display: inline-block;
 }   
 .quiz_section .mlw_qmn_new_question{
-    font-weight: bold;
     display: inline;
     width: auto;
     margin-bottom: 10px;
+    font-family: niveau-grotesk, sans-serif;
 }
 .quiz_section .mlw_qmn_question.qsm_remove_bold{
     font-weight: normal;
@@ -262,9 +317,11 @@ footer.qsm-popup__footer button.qsm-popup-secondary-button:hover{
 .quiz_section input[type="text"].qmn_fill_blank{
     display: inline-block;
 }
+/*
 .qmn_quiz_container .mlw_previous{
     margin-bottom: 15px;
 }
+*/
 .multi-checkbox-limit-reach{
     color: red;
     margin-top: 5px;
@@ -309,6 +366,13 @@ footer.qsm-popup__footer button.qsm-popup-secondary-button:hover{
 .qsm_tooltip {
   position: relative;
   display: inline-block;
+}
+
+.btn-img-static {
+    display:inline-block;
+}
+.btn-img-hover {
+    display:none;
 }
 
 .qsm_tooltip .qsm_tooltiptext{

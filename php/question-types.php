@@ -1465,7 +1465,7 @@ function qsm_question_title_func( $question, $question_type = '', $new_question_
 		}
 	}
 	if ( $new_question_title != '' ) {
-		$question_display  .= "<span class='mlw_qmn_new_question'>" . sanitize_text_field( htmlspecialchars_decode( $new_question_title, ENT_QUOTES ) ) . '</span>';
+		$question_display  .= "<h2>" . sanitize_text_field( htmlspecialchars_decode( $new_question_title, ENT_QUOTES ) ) . '</h2>';
 		$polar_extra_class .= ' qsm_remove_bold';
 	}
 
