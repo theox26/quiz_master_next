@@ -1,20 +1,22 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# Quiz And Survey Master (Formerly Quiz Master Next)
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+Easily and quickly add quizzes, tests, and surveys to your WordPress site.
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+## Getting Started
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+This repo is for the core plugin for Quiz And Survey Master. This can be downloaded as a zip and installed as-is with no build script needing to be run.
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+## Contributing
+Please read [CONTRIBUTING.md](https://github.com/QuizandSurveyMaster/quiz_master_next/blob/master/CONTRIBUTING.md) for the process for submitting pull requests or issues to us.
+
+## Versioning
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see [the releases in this repository](https://github.com/QuizandSurveyMaster/quiz_master_next/releases).
+
+## Developers
+See [the list of contributors](https://github.com/QuizandSurveyMaster/quiz_master_next/graphs/contributors) who participated in this project.
+
+## License
+This project is licensed under the GPLv2 License - see the [LICENSE.md file](https://github.com/QuizandSurveyMaster/quiz_master_next/blob/master/LICENSE.md) for details.
+
+## Support ##
+This is a developer's portal for Quiz And Survey Master and should _not_ be used for support. Please create a support ticket [here](https://quizandsurveymaster.com/contact-support/).
