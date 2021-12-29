@@ -992,7 +992,7 @@ public function load_questions( $quiz_id, $quiz_options, $is_quiz_page, $questio
 			<p>Link your results to a free TroveStreet account. You will also get access to exclusive content and more!</p>
 			<div class="row">
 				<div class="col-md-4">
-					<button type="submit" value="login" id="login-submit" class="btn-trove-primary">
+					<a href="#" id="login-submit" class="btn-trove-primary">
 						<div style="z-index:3;" class="bgcolor-white pr-0 pr-md-1"><span class="ArrowBtnText">Login</span></div>
 						<div class="position-relative">
 							<div class="hoverArrowAnimation">
@@ -1002,13 +1002,13 @@ public function load_questions( $quiz_id, $quiz_options, $is_quiz_page, $questio
 								</svg>
 							</div>
 						</div>
-					</button>
+					</a>
 				</div>
 				<div class="col-md-2 my-auto">
 					<p class="mb-0">or</p>
 				</div>
 				<div class="col-md-4">
-					<button type="submit" value="register" id="register-submit" class="btn-trove-primary">
+					<a href="#" id="register-submit" class="btn-trove-primary">
 						<div style="z-index:3;" class="bgcolor-white pr-0 pr-md-1"><span class="ArrowBtnText">Sign Up</span></div>
 						<div class="position-relative">
 							<div class="hoverArrowAnimation">
@@ -1018,20 +1018,43 @@ public function load_questions( $quiz_id, $quiz_options, $is_quiz_page, $questio
 								</svg>
 							</div>
 						</div>
-					</button>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-6">
-					<input type="submit" class="qsm-submit-btn" value="Login" style="">
-				</div>
-				<div class="col-md-6">
-					<input type="submit" class="qsm-submit-btn" value="Sign Up" style="">
+					</a>
 				</div>
 			</div>
 			<div class="row">
 				<p>If you don't want to save your results to your TroveStreet account, you can get a one-time email with your quiz results.</p>
 			</div>
+			<script>
+				jQuery('#login-submit').click(function(e){
+					e.preventDefault();
+
+					var tsQuiz = {
+					'action': 'login',
+					'name': jQuery('input.qsm_required_text[name="contact_field_0"]').val(),
+					'email': jQuery('input.qsm_required_text[name="contact_field_1"]').val()
+				};
+				
+				setCookie('tsQuiz', JSON.stringify(tsQuiz), 1);
+
+				//no other way worked to actually submit the form properly
+				jQuery('.qsm-submit-btn').click();
+				});
+
+				jQuery('#register-submit').click(function(e){
+					e.preventDefault();
+
+					var tsQuiz = {
+					'action': 'register',
+					'name': jQuery('input.qsm_required_text[name="contact_field_0"]').val(),
+					'email': jQuery('input.qsm_required_text[name="contact_field_1"]').val()
+				};
+				
+				setCookie('tsQuiz', JSON.stringify(tsQuiz), 1);
+
+				//no other way worked to actually submit the form properly
+				jQuery('.qsm-submit-btn').click();
+				});				
+			</script>
 	</div>
 	<?php
 				// Legacy code.
