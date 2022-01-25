@@ -989,7 +989,7 @@ public function load_questions( $quiz_id, $quiz_options, $is_quiz_page, $questio
 			}
 			?>
 			<!-- Contact at end of quiz -->
-			<p>Link your results to a free TroveStreet account. You will also get access to exclusive content and more!</p>
+			<h3>Link your results to a free TroveStreet account. You will also get access to exclusive content and more!</h3>
 			<div class="row">
 				<div class="col-md-4">
 					<a href="#" id="login-submit" class="btn-trove-primary">
@@ -1022,7 +1022,9 @@ public function load_questions( $quiz_id, $quiz_options, $is_quiz_page, $questio
 				</div>
 			</div>
 			<div class="row">
-				<p>If you don't want to save your results to your TroveStreet account, you can get a one-time email with your quiz results.</p>
+				<div class="col-md-12">
+					<h3 class="pt-2" style="font-weight:bold;">If you don't want to save your results to your TroveStreet account, you can get a one-time email with your quiz results.</h3>
+				</div>
 			</div>
 			<script>
 				jQuery('#login-submit').click(function(e){
