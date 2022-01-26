@@ -991,11 +991,11 @@ public function load_questions( $quiz_id, $quiz_options, $is_quiz_page, $questio
 
 			if (is_user_logged_in()) :
 			?>
-			<h3>Schedule 15 minutes to talk to a navigator about your survey results!</h3>
+			<h3>Link your results to a free TroveStreet account.</h3>
 			<div class="row">
-				<div class="col-md-4 mx-auto">
-					<a href="#" id="schedule-submit" class="btn-trove-primary">
-						<div style="z-index:3;" class="bgcolor-white pr-0 pr-md-1"><span class="ArrowBtnText">Schedule</span></div>
+				<div class="col-md-8">
+					<a href="#" id="norm-submit" class="btn-trove-primary">
+						<div style="z-index:3;" class="bgcolor-white pr-0 pr-md-1"><span class="ArrowBtnText">Link results to your account</span></div>
 						<div class="position-relative">
 							<div class="hoverArrowAnimation">
 								<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 106 35">
@@ -1008,22 +1008,24 @@ public function load_questions( $quiz_id, $quiz_options, $is_quiz_page, $questio
 				</div>
 			</div>
 			<script>
-				jQuery('#schedule-submit').click(function(e){
+				jQuery('#norm-submit').click(function(e){
 					e.preventDefault();
-
-					var tsQuiz = {
-						'action': 'consult',
-						'url': 'https://calendly.com/trovestreet/getting-started'
-					};
 				
-					setCookie('tsQuiz', JSON.stringify(tsQuiz), 1);
+					setCookie('tsQuiz', '', 0); //delete any existing cookie
 
 					//no other way worked to actually submit the form properly
 					jQuery('.qsm-submit-btn').click();
 				});			
 			</script>
 			<?php else : ?>
-			<h3>Link your results to a free TroveStreet account. You will also get access to exclusive content and more!</h3>
+			<h3>Create a free TroveStreet account to save your results and receive these additional benefits:</h3>
+			<ol>
+				<li>Gain access to exclusive TroveStreet offers, deals and events.</li>
+				<li>Save resources to your profile in your own virtual notebook.</li>
+				<li>Build and save your TroveStreet Planning Tool.</li>
+				<li>See article recommendations and inspiration customized to your interests.</li>
+			</ol>
+
 			<div class="row">
 				<div class="col-md-4">
 					<a href="#" id="login-submit" class="btn-trove-primary">
@@ -1057,7 +1059,9 @@ public function load_questions( $quiz_id, $quiz_options, $is_quiz_page, $questio
 			</div>
 			<div class="row">
 				<div class="col-md-12">
-					<h3 class="pt-2" style="font-weight:bold;">If you don't want to save your results to your TroveStreet account, you can get a one-time email with your quiz results.</h3>
+					<h3 class="pt-2" style="font-weight:bold;">If you aren't ready to sign up for your free account, 
+					you can schedule a 15-minute conversation with a TroveStreet navigator to review your results and learn how you can get the most out of TroveStreet.</h3>
+					<a href="#" id="schedule-submit">Schedule a free 15-minute conversation</a>
 				</div>
 			</div>
 			<script>
@@ -1089,7 +1093,21 @@ public function load_questions( $quiz_id, $quiz_options, $is_quiz_page, $questio
 
 					//no other way worked to actually submit the form properly
 					jQuery('.qsm-submit-btn').click();
-				});				
+				});	
+				
+				jQuery('#schedule-submit').click(function(e){
+					e.preventDefault();
+
+					var tsQuiz = {
+						'action': 'consult',
+						'url': 'https://calendly.com/trovestreet/getting-started'
+					};
+				
+					setCookie('tsQuiz', JSON.stringify(tsQuiz), 1);
+
+					//no other way worked to actually submit the form properly
+					jQuery('.qsm-submit-btn').click();
+				});	
 			</script>
 			<?php endif; ?>
 	</div>
