@@ -982,13 +982,47 @@ public function load_questions( $quiz_id, $quiz_options, $is_quiz_page, $questio
 			?>
 <section class="qsm-page" style="display: none;">
 	<div class="quiz_section">
-		<div class='qsm-after-message mlw_qmn_message_end'><?php echo $message_after; ?></div>
+		<div class='qsm-after-message mlw_qmn_message_end'><?php echo $message_after; ?></div>		
+		<!-- Contact at end of quiz -->
 		<?php
 			if ( 1 == $options->contact_info_location ) {
 				echo QSM_Contact_Manager::display_fields( $options );
 			}
+
+			if (is_user_logged_in()) :
 			?>
-			<!-- Contact at end of quiz -->
+			<h3>Schedule 15 minutes to talk to a navigator about your survey results!</h3>
+			<div class="row">
+				<div class="col-md-4 mx-auto">
+					<a href="#" id="schedule-submit" class="btn-trove-primary">
+						<div style="z-index:3;" class="bgcolor-white pr-0 pr-md-1"><span class="ArrowBtnText">Schedule</span></div>
+						<div class="position-relative">
+							<div class="hoverArrowAnimation">
+								<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 106 35">
+									<path id="arrow" class="rightArrow" d="M85.6,0l-1.3,1.5l18.7,16l-18.7,16l1.3,1.5L106,17.5L85.6,0z"/>
+									<line id="arrow2" class="rightArrow" x1="0" x2="104" y1="17.5" y2="17.5" stroke="#977640" stroke-width="2" />
+								</svg>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+			<script>
+				jQuery('#schedule-submit').click(function(e){
+					e.preventDefault();
+
+					var tsQuiz = {
+						'action': 'consult',
+						'url': 'https://calendly.com/trovestreet/getting-started'
+					};
+				
+					setCookie('tsQuiz', JSON.stringify(tsQuiz), 1);
+
+					//no other way worked to actually submit the form properly
+					jQuery('.qsm-submit-btn').click();
+				});			
+			</script>
+			<?php else : ?>
 			<h3>Link your results to a free TroveStreet account. You will also get access to exclusive content and more!</h3>
 			<div class="row">
 				<div class="col-md-4">
@@ -1031,32 +1065,33 @@ public function load_questions( $quiz_id, $quiz_options, $is_quiz_page, $questio
 					e.preventDefault();
 
 					var tsQuiz = {
-					'action': 'login',
-					'name': jQuery('input.qsm_required_text[name="contact_field_0"]').val(),
-					'email': jQuery('input.qsm_required_text[name="contact_field_1"]').val()
-				};
+						'action': 'login',
+						'name': jQuery('input.qsm_required_text[name="contact_field_0"]').val(),
+						'email': jQuery('input.qsm_required_text[name="contact_field_1"]').val()
+					};
 				
-				setCookie('tsQuiz', JSON.stringify(tsQuiz), 1);
+					setCookie('tsQuiz', JSON.stringify(tsQuiz), 1);
 
-				//no other way worked to actually submit the form properly
-				jQuery('.qsm-submit-btn').click();
+					//no other way worked to actually submit the form properly
+					jQuery('.qsm-submit-btn').click();
 				});
 
 				jQuery('#register-submit').click(function(e){
 					e.preventDefault();
 
 					var tsQuiz = {
-					'action': 'register',
-					'name': jQuery('input.qsm_required_text[name="contact_field_0"]').val(),
-					'email': jQuery('input.qsm_required_text[name="contact_field_1"]').val()
-				};
-				
-				setCookie('tsQuiz', JSON.stringify(tsQuiz), 1);
+						'action': 'register',
+						'name': jQuery('input.qsm_required_text[name="contact_field_0"]').val(),
+						'email': jQuery('input.qsm_required_text[name="contact_field_1"]').val()
+					};
+					
+					setCookie('tsQuiz', JSON.stringify(tsQuiz), 1);
 
-				//no other way worked to actually submit the form properly
-				jQuery('.qsm-submit-btn').click();
+					//no other way worked to actually submit the form properly
+					jQuery('.qsm-submit-btn').click();
 				});				
 			</script>
+			<?php endif; ?>
 	</div>
 	<?php
 				// Legacy code.
