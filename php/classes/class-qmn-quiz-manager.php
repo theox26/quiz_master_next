@@ -982,14 +982,50 @@ public function load_questions( $quiz_id, $quiz_options, $is_quiz_page, $questio
 			?>
 <section class="qsm-page" style="display: none;">
 	<div class="quiz_section">
-		<div class='qsm-after-message mlw_qmn_message_end'><?php echo $message_after; ?></div>
+		<div class='qsm-after-message mlw_qmn_message_end'><?php echo $message_after; ?></div>		
+		<!-- Contact at end of quiz -->
 		<?php
 			if ( 1 == $options->contact_info_location ) {
 				echo QSM_Contact_Manager::display_fields( $options );
 			}
+
+			if (is_user_logged_in()) :
 			?>
-			<!-- Contact at end of quiz -->
-			<p>Link your results to a free TroveStreet account. You will also get access to exclusive content and more!</p>
+			<h3>Link your results to a free TroveStreet account.</h3>
+			<div class="row">
+				<div class="col-md-8">
+					<a href="#" id="norm-submit" class="btn-trove-primary">
+						<div style="z-index:3;" class="bgcolor-white pr-0 pr-md-1"><span class="ArrowBtnText">Link results to your account</span></div>
+						<div class="position-relative">
+							<div class="hoverArrowAnimation">
+								<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 106 35">
+									<path id="arrow" class="rightArrow" d="M85.6,0l-1.3,1.5l18.7,16l-18.7,16l1.3,1.5L106,17.5L85.6,0z"/>
+									<line id="arrow2" class="rightArrow" x1="0" x2="104" y1="17.5" y2="17.5" stroke="#977640" stroke-width="2" />
+								</svg>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+			<script>
+				jQuery('#norm-submit').click(function(e){
+					e.preventDefault();
+				
+					setCookie('tsQuiz', '', 0); //delete any existing cookie
+
+					//no other way worked to actually submit the form properly
+					jQuery('.qsm-submit-btn').click();
+				});			
+			</script>
+			<?php else : ?>
+			<h3 class="mt-3" style="font-size: 2rem; font-weight: 600;">Create a free TroveStreet account to save your results and receive these additional benefits:</h3>
+			<ol style="font-size: 1.5rem;">
+				<li>Gain access to exclusive TroveStreet offers, deals and events.</li>
+				<li>Save resources to your profile in your own virtual notebook.</li>
+				<li>Build and save your TroveStreet Planning Tool.</li>
+				<li>See article recommendations and inspiration customized to your interests.</li>
+			</ol>
+
 			<div class="row">
 				<div class="col-md-4">
 					<a href="#" id="login-submit" class="btn-trove-primary">
@@ -1022,39 +1058,58 @@ public function load_questions( $quiz_id, $quiz_options, $is_quiz_page, $questio
 				</div>
 			</div>
 			<div class="row">
-				<p>If you don't want to save your results to your TroveStreet account, you can get a one-time email with your quiz results.</p>
+				<div class="col-md-12">
+					<p class="pt-2" style="font-size: 1.5rem;">If you aren't ready to sign up for your free account, 
+					you can schedule a 15-minute conversation with a TroveStreet navigator to review your results and learn how you can get the most out of TroveStreet.</hp>
+					<a style="font-size: 1.5rem;" href="#" id="schedule-submit">Schedule a free 15-minute conversation</a>
+				</div>
 			</div>
 			<script>
 				jQuery('#login-submit').click(function(e){
 					e.preventDefault();
 
 					var tsQuiz = {
-					'action': 'login',
-					'name': jQuery('input.qsm_required_text[name="contact_field_0"]').val(),
-					'email': jQuery('input.qsm_required_text[name="contact_field_1"]').val()
-				};
+						'action': 'login',
+						'name': jQuery('input.qsm_required_text[name="contact_field_0"]').val(),
+						'email': jQuery('input.qsm_required_text[name="contact_field_1"]').val()
+					};
 				
-				setCookie('tsQuiz', JSON.stringify(tsQuiz), 1);
+					setCookie('tsQuiz', JSON.stringify(tsQuiz), 1);
 
-				//no other way worked to actually submit the form properly
-				jQuery('.qsm-submit-btn').click();
+					//no other way worked to actually submit the form properly
+					jQuery('.qsm-submit-btn').click();
 				});
 
 				jQuery('#register-submit').click(function(e){
 					e.preventDefault();
 
 					var tsQuiz = {
-					'action': 'register',
-					'name': jQuery('input.qsm_required_text[name="contact_field_0"]').val(),
-					'email': jQuery('input.qsm_required_text[name="contact_field_1"]').val()
-				};
-				
-				setCookie('tsQuiz', JSON.stringify(tsQuiz), 1);
+						'action': 'register',
+						'name': jQuery('input.qsm_required_text[name="contact_field_0"]').val(),
+						'email': jQuery('input.qsm_required_text[name="contact_field_1"]').val()
+					};
+					
+					setCookie('tsQuiz', JSON.stringify(tsQuiz), 1);
 
-				//no other way worked to actually submit the form properly
-				jQuery('.qsm-submit-btn').click();
-				});				
+					//no other way worked to actually submit the form properly
+					jQuery('.qsm-submit-btn').click();
+				});	
+				
+				jQuery('#schedule-submit').click(function(e){
+					e.preventDefault();
+
+					var tsQuiz = {
+						'action': 'consult',
+						'url': 'https://calendly.com/trovestreet/interest-survey-results'
+					};
+				
+					setCookie('tsQuiz', JSON.stringify(tsQuiz), 1);
+
+					//no other way worked to actually submit the form properly
+					jQuery('.qsm-submit-btn').click();
+				});	
 			</script>
+			<?php endif; ?>
 	</div>
 	<?php
 				// Legacy code.
