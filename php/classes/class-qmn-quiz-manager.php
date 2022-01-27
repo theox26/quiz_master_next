@@ -1018,8 +1018,8 @@ public function load_questions( $quiz_id, $quiz_options, $is_quiz_page, $questio
 				});			
 			</script>
 			<?php else : ?>
-			<h3>Create a free TroveStreet account to save your results and receive these additional benefits:</h3>
-			<ol>
+			<h3 class="mt-3" style="font-size: 2rem; font-weight: 600;">Create a free TroveStreet account to save your results and receive these additional benefits:</h3>
+			<ol style="font-size: 1.5rem;">
 				<li>Gain access to exclusive TroveStreet offers, deals and events.</li>
 				<li>Save resources to your profile in your own virtual notebook.</li>
 				<li>Build and save your TroveStreet Planning Tool.</li>
@@ -1059,9 +1059,9 @@ public function load_questions( $quiz_id, $quiz_options, $is_quiz_page, $questio
 			</div>
 			<div class="row">
 				<div class="col-md-12">
-					<h3 class="pt-2" style="font-weight:bold;">If you aren't ready to sign up for your free account, 
-					you can schedule a 15-minute conversation with a TroveStreet navigator to review your results and learn how you can get the most out of TroveStreet.</h3>
-					<a href="#" id="schedule-submit">Schedule a free 15-minute conversation</a>
+					<p class="pt-2" style="font-weight:bold;">If you aren't ready to sign up for your free account, 
+					you can schedule a 15-minute conversation with a TroveStreet navigator to review your results and learn how you can get the most out of TroveStreet.</hp>
+					<a style="font-size: 1.5rem;" href="https://calendly.com/trovestreet/getting-started" id="schedule-submit">Schedule a free 15-minute conversation</a>
 				</div>
 			</div>
 			<script>
