@@ -1059,7 +1059,7 @@ public function load_questions( $quiz_id, $quiz_options, $is_quiz_page, $questio
 			</div>
 			<div class="row">
 				<div class="col-md-12">
-					<p class="pt-2" style="font-weight:bold;">If you aren't ready to sign up for your free account, 
+					<p class="pt-2" style="font-size: 1.5rem;">If you aren't ready to sign up for your free account, 
 					you can schedule a 15-minute conversation with a TroveStreet navigator to review your results and learn how you can get the most out of TroveStreet.</hp>
 					<a style="font-size: 1.5rem;" href="#" id="schedule-submit">Schedule a free 15-minute conversation</a>
 				</div>
