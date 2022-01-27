@@ -1100,7 +1100,7 @@ public function load_questions( $quiz_id, $quiz_options, $is_quiz_page, $questio
 
 					var tsQuiz = {
 						'action': 'consult',
-						'url': 'https://calendly.com/trovestreet/getting-started'
+						'url': 'https://calendly.com/trovestreet/interest-survey-results'
 					};
 				
 					setCookie('tsQuiz', JSON.stringify(tsQuiz), 1);
